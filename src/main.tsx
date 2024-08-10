@@ -1,4 +1,4 @@
-import { MantineProvider, createTheme } from '@mantine/core'
+import { MantineProvider, Text, createTheme } from '@mantine/core'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
@@ -6,10 +6,19 @@ import { ActiveSectionProvider } from '@/hooks'
 import App from './App.tsx'
 
 import '@mantine/core/styles.css'
-import './index.css'
+import './index.scss'
 
 const theme = createTheme({
-  // primaryColor: 'red'
+  primaryColor: 'cyan',
+  fontFamily: 'Inter Variable, sans-serif',
+
+  components: {
+    Text: Text.extend({
+      defaultProps: {
+        fz: 'md'
+      },
+    }),
+  },
 })
 
 createRoot(document.getElementById('root')!).render(

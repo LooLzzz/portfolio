@@ -1,0 +1,32 @@
+$transition-duration: 0.15s;
+
+.sectionLink {
+  transition: all $transition-duration ease;
+  text-transform: uppercase;
+  opacity: 0.5;
+  color: var(--mantine-color-white) !important;
+
+  &:hover {
+    opacity: 0.9;
+    color: var(--mantine-color-anchor) !important;
+  }
+
+  &.active {
+    opacity: 0.9;
+    color: var(--mantine-color-anchor) !important;
+  }
+}
+
+.navIndicator {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background-color: var(--mantine-color-white);
+  transition: all $transition-duration cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.active {
+    width: 4rem;
+    background-color: var(--mantine-color-anchor);
+  }
+}

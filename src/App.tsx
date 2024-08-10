@@ -1,43 +1,60 @@
-import { About, Experience, Hero, Projects } from '@/components'
-import { Box, Container, Group, Stack } from '@mantine/core'
-import { useIntersection } from '@mantine/hooks'
-import { useEffect } from 'react'
+import { Sections } from '@/components'
+import { Box, Container, SimpleGrid, Stack } from '@mantine/core'
+import { useMouse, useViewportSize, useWindowScroll } from '@mantine/hooks'
+import { useEffect, useRef } from 'react'
 
 import { useActiveSection } from './hooks'
 
 function App() {
-  const [_, setActiveSection] = useActiveSection()
+  const { height: viewportHeight } = useViewportSize()
+  const { x: mouseX, y: mouseY } = useMouse()
+  const [{ x: scrollX, y: scrollY },] = useWindowScroll()
+  const [, setActiveSection] = useActiveSection()
 
-  const { ref: aboutRef, entry: aboutEntry } = useIntersection({ threshold: 0.9 })
-  const { ref: experienceRef, entry: experienceEntry } = useIntersection({ threshold: 0.25 })
-  const { ref: projectsRef, entry: projectsEntry } = useIntersection({ threshold: 0.9 })
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const experienceRef = useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (aboutEntry?.isIntersecting)
-      setActiveSection('About')
-    else if (projectsEntry?.isIntersecting)
-      setActiveSection('Projects')
-    else if (experienceEntry?.isIntersecting)
-      setActiveSection('Experience')
-  }, [
-    aboutEntry?.isIntersecting,
-    experienceEntry?.isIntersecting,
-    projectsEntry?.isIntersecting,
-  ])
+    const viewportHeightThreshold = viewportHeight * 0.8
+    const currentScrollY = scrollY + viewportHeightThreshold
+
+    const aboutOffset = aboutRef.current?.offsetTop
+    const experienceOffset = experienceRef.current?.offsetTop
+    const projectsOffset = projectsRef.current?.offsetTop
+
+    if (aboutOffset && experienceOffset && projectsOffset) {
+      if (currentScrollY >= aboutOffset && currentScrollY < experienceOffset) {
+        setActiveSection('About')
+      } else if (currentScrollY >= experienceOffset && currentScrollY < projectsOffset) {
+        setActiveSection('Experience')
+      } else if (currentScrollY >= projectsOffset) {
+        setActiveSection('Projects')
+      }
+    }
+  }, [viewportHeight, scrollX, scrollY])
 
   return (
-    <Container size='xl' pt={50}>
-      <Group grow pos='relative' align='flex-start' gap={50} wrap='nowrap'>
-        <Box pos='sticky' top={50}>
-          <Hero />
+    <Container size='xl' p={'65 65 0 65'}>
+      <Box
+        className='floatingHighlight'
+        top={mouseY}
+        left={mouseX}
+      />
+
+      <SimpleGrid cols={{ base: 1, md: 2 }}>
+        <Box pos='relative'>
+          <Box pos='sticky' top={65} h='calc(100vh - 65px)'>
+            <Sections.Hero />
+          </Box>
         </Box>
 
         <Stack>
-          <About ref={aboutRef} />
-          <Experience ref={experienceRef} />
-          <Projects ref={projectsRef} />
+          <Sections.About ref={aboutRef} style={{ minHeight: 1500 }} />
+          <Sections.Experience ref={experienceRef} style={{ paddingTop: 65, minHeight: 1500 }} />
+          <Sections.Projects ref={projectsRef} style={{ paddingTop: 65, minHeight: 1500 }} />
         </Stack>
-      </Group>
+      </SimpleGrid>
     </Container>
   )
 }
