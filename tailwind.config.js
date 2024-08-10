@@ -12,9 +12,9 @@ export default {
 
         "bg-primary": "#0f172a",
 
-        "text-primary": "rgba(255, 255, 255, 0.7)",
-        "text-secondary": "rgba(255, 255, 255, 0.9)",
-        "text-heading": "rgba(255, 255, 255, 0.9)",
+        "text-heading": "rgba(255, 255, 255, 0.8)",
+        "text-primary": "rgba(255, 255, 255, 0.6)",
+        "text-secondary": "rgba(255, 255, 255, 0.8)",
       }
     },
   },
