@@ -1,11 +1,12 @@
 import { Sections } from '@/components'
 import { Box, Container, SimpleGrid, Stack } from '@mantine/core'
-import { useMouse, useViewportSize, useWindowScroll } from '@mantine/hooks'
+import { useMouse, useViewportSize, useWindowScroll,useMediaQuery } from '@mantine/hooks'
 import { useEffect, useRef } from 'react'
 
 import { useActiveSection } from './hooks'
 
 function App() {
+  const isMobile = useMediaQuery('(max-width: 768px)')
   const { height: viewportHeight } = useViewportSize()
   const { x: mouseX, y: mouseY } = useMouse()
   const [{ x: scrollX, y: scrollY },] = useWindowScroll()
@@ -15,9 +16,12 @@ function App() {
   const experienceRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
 
+  const viewportHeightThreshold = 0.3
+  const containerPaddingTop = 100
+  const containerPaddingLeftRight = isMobile ? 30 : 100
+
   useEffect(() => {
-    const viewportHeightThreshold = viewportHeight * 0.8
-    const currentScrollY = scrollY + viewportHeightThreshold
+    const currentScrollY = scrollY + viewportHeight * viewportHeightThreshold
 
     const aboutOffset = aboutRef.current?.offsetTop
     const experienceOffset = experienceRef.current?.offsetTop
@@ -35,7 +39,7 @@ function App() {
   }, [viewportHeight, scrollX, scrollY])
 
   return (
-    <Container size='xl' p={'65 65 0 65'}>
+    <Container size='xl' p={[containerPaddingTop, containerPaddingLeftRight, 0, containerPaddingLeftRight].join(' ')}>
       <Box
         className='floatingHighlight'
         top={mouseY}
@@ -44,15 +48,15 @@ function App() {
 
       <SimpleGrid cols={{ base: 1, md: 2 }}>
         <Box pos='relative'>
-          <Box pos='sticky' top={65} h='calc(100vh - 65px)'>
+          <Box pos='sticky' top={containerPaddingTop} h={`calc(100vh - ${containerPaddingTop}px - ${isMobile ? '40px' : '0px'})`}>
             <Sections.Hero />
           </Box>
         </Box>
 
         <Stack>
-          <Sections.About ref={aboutRef} style={{ minHeight: 1500 }} />
-          <Sections.Experience ref={experienceRef} style={{ paddingTop: 65, minHeight: 1500 }} />
-          <Sections.Projects ref={projectsRef} style={{ paddingTop: 65, minHeight: 1500 }} />
+          <Sections.About ref={aboutRef} style={{ minHeight: '50vh' }} />
+          <Sections.Experience ref={experienceRef} style={{ paddingTop: containerPaddingTop, minHeight: '50vh' }} />
+          <Sections.Projects ref={projectsRef} style={{ paddingTop: containerPaddingTop, minHeight: '50vh' }} />
         </Stack>
       </SimpleGrid>
     </Container>

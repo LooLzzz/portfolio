@@ -8,14 +8,16 @@ const Hero = () => {
   return (
     <Stack h='100%'>
       <Stack>
-        <Title lts='-0.025em' order={1} fz={50} fw={800}>
+        <Title lts='-0.025em' order={1} fz={50} fw={800} style={{
+          textShadow: '0 0 0.75rem rgba(255, 255, 255, 0.3)',
+        }}>
           Noam Levi
         </Title>
         <Title lts='-0.025em' order={3} fw={700}>
           Fullstack Engineer
         </Title>
         <Text>
-          Passionate software engineer, tinkerer, gamer, and an all around accomplished geek.
+          Passionate software engineer, tinkerer, gamer, and an all around accomplished geek 😎
         </Text>
       </Stack>
 

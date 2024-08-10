@@ -1,0 +1,41 @@
+$primary-color-light-hover-transparent: color-mix(in srgb, var(--mantine-primary-color-light-hover), transparent 70%);
+$border-color: var(--mantine-color-dark-4);
+$border-color-transparent: color-mix(in srgb, $border-color, transparent 100%);
+
+$transition-duration: 0.2s;
+$transition-timing-function: ease-in-out;
+
+.card {
+    position: relative;
+    transition-property: background-color, opacity, border;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-timing-function;
+    background: none !important;
+    padding: var(--mantine-spacing-xs);
+    border-top: calc(0.0625rem * var(--mantine-scale)) solid $border-color-transparent;
+    // border-left: calc(0.0625rem * var(--mantine-scale)) solid $border-color-transparent;
+
+    &:hover {
+        background: $primary-color-light-hover-transparent !important;
+        border-top-color: var(--mantine-color-dark-4);
+        // border-left-color: var(--mantine-color-dark-4);
+
+        .link {
+            opacity: 1;
+            top: -2px;
+            right: -2px;
+        }
+    }
+}
+
+.link {
+    position: absolute;
+    transition: all $transition-duration $transition-timing-function;
+    top: 2px;
+    right: 2px;
+    opacity: 0.5;
+}
+
+.faded {
+    opacity: 0.3;
+}

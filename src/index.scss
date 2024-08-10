@@ -59,3 +59,7 @@ $dimlight: rgba(198, 194, 255, 0.6);  // blend mode: overlay
   // z-index: -9999;
   z-index: 30;
 }
+
+.clickable {
+  cursor: pointer;
+}
