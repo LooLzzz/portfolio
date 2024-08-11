@@ -10,7 +10,10 @@ import './index.scss'
 
 const theme = createTheme({
   primaryColor: 'cyan',
+  // fontFamily: 'Futura Std, sans-serif',
+  // fontFamily: 'Open Sans Variable, sans-serif',
   fontFamily: 'Inter Variable, sans-serif',
+  // fontFamily: 'Poppins, sans-serif',
 
   components: {
     Text: Text.extend({

@@ -1,21 +1,38 @@
-import { ActionIcon, Box, Group, Space, Stack, Text, Title, Tooltip } from '@mantine/core'
+import { ActionIcon, Box, Group, Space, Stack, Text, Title, Tooltip, rem } from '@mantine/core'
 import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify, IconMail } from '@tabler/icons-react'
 
 import { type ActiveSectionTypedef } from '@/hooks'
+
 import SectionLink from './SectionLink'
 
 const Hero = () => {
   return (
     <Stack h='100%'>
       <Stack>
-        <Title lts='-0.025em' order={1} fz={50} fw={800} style={{
-          textShadow: '0 0 0.75rem rgba(255, 255, 255, 0.3)',
-        }}>
-          Noam Levi
-        </Title>
-        <Title lts='-0.025em' order={3} fw={700}>
-          Fullstack Engineer
-        </Title>
+        <Box>
+          <Text
+            component='a'
+            href='#'
+            td='none'
+            ff='Montserrat'
+            fz='3.75rem'
+            fw={900}
+            c='var(--mantine-primary-color-0)'
+            style={{
+              textShadow: '0 0 0.8rem rgba(255, 255, 255, 0.3)',
+            }}
+          >
+            Noam Levi
+          </Text>
+          <Text
+            ff='Montserrat'
+            fz='1.4rem'
+            fw={700}
+            mt='-1rem'
+          >
+            Fullstack Engineer
+          </Text>
+        </Box>
         <Text>
           Passionate software engineer, tinkerer, gamer, and an all around accomplished geek 😎
         </Text>
