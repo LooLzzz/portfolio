@@ -1,5 +1,5 @@
 import { Badge, Box, Group, Paper, PaperProps, Stack, Text } from "@mantine/core"
-import { IconArrowUpRight, IconExternalLink } from '@tabler/icons-react'
+import { IconExternalLink } from '@tabler/icons-react'
 import React from "react"
 
 import classes from './index.module.scss'

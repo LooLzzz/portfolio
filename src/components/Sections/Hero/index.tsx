@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Group, Space, Stack, Text, Title, Tooltip, rem } from '@mantine/core'
+import { ActionIcon, Box, Group, Space, Stack, Text, Tooltip } from '@mantine/core'
 import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify, IconMail } from '@tabler/icons-react'
 
 import { type ActiveSectionTypedef } from '@/hooks'

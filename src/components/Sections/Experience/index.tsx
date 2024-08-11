@@ -1,4 +1,4 @@
-import { Box, List, Stack, Text } from '@mantine/core'
+import { Box, Stack, Text } from '@mantine/core'
 import { forwardRef, useState } from 'react'
 
 import { ExperienceTab } from '@/components'
