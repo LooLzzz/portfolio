@@ -3,37 +3,32 @@ import { Box, Group, Text, type TextProps } from '@mantine/core'
 import { useActiveSection, type ActiveSectionTypedef } from '@/hooks'
 
 import classes from './SectionLink.module.scss'
-import { useState } from 'react'
 
 interface SectionLinkProps extends TextProps {
   section: ActiveSectionTypedef
 }
 
 const SectionLink = ({
-  section, ...props
+  section,
+  ...props
 }: SectionLinkProps) => {
-  const [activeSection, _] = useActiveSection()
-  const [isHovered, setIsHovered] = useState(false)
+  const [activeSection,] = useActiveSection()
   const isActive = activeSection === section
-  const activeClassName = isActive || isHovered ? classes.active : ''
+  const activeClassName = isActive ? classes.active : ''
 
   return (
     <Box w='fit-content'>
       <Text
         component='a'
-        href={section === 'About' ? '#' : `#${section.toLowerCase()}`}
+        href={section === 'about' ? '#' : `#${section.toLowerCase()}`}
         className={`${classes.sectionLink} ${activeClassName}`}
-        fw={600}
+        fw={700}
         fz='xs'
         {...props}
       >
-        <Group
-          wrap='nowrap'
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <Box className={`${classes.navIndicator} ${activeClassName}`} />
-          {section}
+        <Group wrap='nowrap'>
+          <Box className={classes.navIndicator} />
+          {section.charAt(0).toUpperCase() + section.slice(1)}
         </Group>
       </Text>
     </Box>

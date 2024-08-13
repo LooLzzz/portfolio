@@ -1,22 +1,34 @@
-import { Box, Stack, Text } from '@mantine/core'
-import { forwardRef, useState } from 'react'
+import { Box, BoxProps, Stack, Text } from '@mantine/core'
+import { forwardRef } from 'react'
 
-import { ExperienceTab } from '@/components'
-import { ExperienceTabProps } from '@/components/ExperienceTab'
+import { ExperienceTab, ExperienceTabProps } from '@/components'
 
-const experiences: ExperienceTabProps[] = [
+import classes from './index.module.scss'
+
+const DescriptionText = ({ ...props }) => (
+  <Text
+    component={Stack}
+    gap='0.3rem'
+    fz='sm'
+    c='hsl(216, 18%, 70%)'
+    opacity={0.9}
+    {...props}
+  />
+)
+
+const experiencesData: ExperienceTabProps[] = [
   {
     periodStart: '2023',
     periodEnd: 'Present',
     title: 'Fullstack Developer',
     subtitle: 'YIT / Yedioth Ahronoth Group',
-    tags: ['React', 'Python', 'Redux', 'Node.js', 'TypeScript', 'JavaScript', 'Express', 'Koa', 'AWS', 'Docker'],
+    tags: ['React', 'Python', 'Redux', 'Nodejs', 'TypeScript', 'JavaScript', 'AWS', 'Docker', 'PostgreSQL', 'MySQL', 'Express', 'Koa'],
     url: 'https://yit.co.il/',
     description: (
-      <Text component={Stack} gap='0.3rem' fz='sm' lh='1.3rem'>
-        <Box>
-          TODO: add description
-        </Box>
+      <DescriptionText>
+        <Text fs='italic' fz='inherit'>
+          Developing and maintaining web applications varying from internal tools to customer-facing products.
+        </Text>
         <Box>
           Contributed in developing webapp for managing newspapers, including custom PDF viewer & annotator. Using React, Redux, and Node.js for seamless functionality.
         </Box>
@@ -29,7 +41,7 @@ const experiences: ExperienceTabProps[] = [
         <Box>
           Maintaining and upgrading legacy Python code to modern Python3.12.
         </Box>
-      </Text>
+      </DescriptionText>
     ),
   },
   {
@@ -37,48 +49,60 @@ const experiences: ExperienceTabProps[] = [
     periodEnd: '2023',
     title: 'Fullstack Developer',
     subtitle: 'Griiip',
-    tags: ['Python', 'Multi-processing', 'React', 'Node.js', 'TypeScript', 'JavaScript', 'Embedded (Raspberrypi)', 'Cellular Networking', 'Node.js'],
+    tags: ['Python', 'Multi-processing', 'React', 'Node.js', 'TypeScript', 'JavaScript', 'Embedded (Raspberrypi)', 'Cellular Networking', 'Motor Sports'],
     url: 'https://www.griiip.com/',
     description: (
-      <Text component={Stack} gap='0.3rem' fz='sm' lh='1.3rem'>
+      <DescriptionText>
+        <Text fs='italic' fz='inherit'>
+          Developed and maintained web applications for monitoring and controlling vehicle data.
+        </Text>
         <Box>
-          Things I did
+          Created a web based dashboard for monitoring over deployed devices around the world as well as controlling device’s configuration using a custom job system, created using React.
         </Box>
         <Box>
-          Thing I did
+          Designed and implemented several services written as Linux systemd services, controlling the data flow from several hardware modules (GPS, IMU, CAN-BUS and Cellular modems).
         </Box>
-        <Box>
-          Thing I did
-        </Box>
-        <Box>
-          Thing I did
-        </Box>
-        <Box>
-          Thing I did
-        </Box>
-      </Text>
+      </DescriptionText>
     ),
   },
 ]
 
-const Experience = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
+const Experience = forwardRef<HTMLDivElement, BoxProps>(
   function Experience(props, ref) {
-    const [activeTab, setActiveTab] = useState<number | undefined>(undefined)
-
     return (
-      <Stack id='experience' ref={ref} {...props}>
-        {
-          experiences.map((data, idx) => (
-            <ExperienceTab
-              key={idx}
-              fade={activeTab !== undefined && activeTab !== idx}
-              onMouseEnter={() => setActiveTab(idx)}
-              onMouseLeave={() => setActiveTab(undefined)}
-              {...data}
-            />
-          ))
-        }
-      </Stack>
+      <Box {...props} pos='relative' id='experience'>
+        <Text
+          hiddenFrom='md'
+          pb='sm'
+          pt='md'
+          pos='sticky'
+          top={0}
+          fz='h4'
+          fw={700}
+          style={{
+            webkitBackdropFilter: 'blur(5px)',
+            backdropFilter: 'blur(5px)',
+            textTransform: 'uppercase',
+            zIndex: 1,
+          }}>
+          Experience
+        </Text>
+
+        <Stack
+          ref={ref}
+          className={classes.container}
+        >
+          {
+            experiencesData.map((data, idx) => (
+              <ExperienceTab
+                key={idx}
+                className={classes.highlight}
+                {...data}
+              />
+            ))
+          }
+        </Stack>
+      </Box>
     )
   }
 )

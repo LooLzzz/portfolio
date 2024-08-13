@@ -1,42 +1,33 @@
 import { Sections } from '@/components'
 import { Box, Container, SimpleGrid, Stack } from '@mantine/core'
-import { useMouse, useViewportSize, useWindowScroll,useMediaQuery } from '@mantine/hooks'
-import { useEffect, useRef } from 'react'
+import { useIntersection, useMediaQuery, useMouse } from '@mantine/hooks'
+import { useEffect } from 'react'
 
 import { useActiveSection } from './hooks'
 
-function App() {
-  const isMobile = useMediaQuery('(max-width: 768px)')
-  const { height: viewportHeight } = useViewportSize()
+function App({
+  containerPaddingBase = 100,
+}) {
+  const isMd = useMediaQuery('(max-width: 990px)')
   const { x: mouseX, y: mouseY } = useMouse()
-  const [{ x: scrollX, y: scrollY },] = useWindowScroll()
   const [, setActiveSection] = useActiveSection()
 
-  const aboutRef = useRef<HTMLDivElement>(null)
-  const experienceRef = useRef<HTMLDivElement>(null)
-  const projectsRef = useRef<HTMLDivElement>(null)
+  const { ref: aboutRef, entry: aboutEntry } = useIntersection<HTMLDivElement>({ threshold: 0.5 })
+  const { ref: experienceRef, entry: experienceEntry } = useIntersection<HTMLDivElement>({ threshold: 0.5 })
+  const { ref: projectsRef, entry: projectsEntry } = useIntersection<HTMLDivElement>({ threshold: 0.5 })
 
-  const viewportHeightThreshold = 0.3
-  const containerPaddingTop = 100
-  const containerPaddingLeftRight = isMobile ? 30 : 100
+  const containerPaddingTop = containerPaddingBase / (isMd ? 3 : 1)
+  const containerPaddingLeftRight = containerPaddingBase / (isMd ? 3 : 1)
 
   useEffect(() => {
-    const currentScrollY = scrollY + viewportHeight * viewportHeightThreshold
-
-    const aboutOffset = aboutRef.current?.offsetTop
-    const experienceOffset = experienceRef.current?.offsetTop
-    const projectsOffset = projectsRef.current?.offsetTop
-
-    if (aboutOffset && experienceOffset && projectsOffset) {
-      if (currentScrollY >= aboutOffset && currentScrollY < experienceOffset) {
-        setActiveSection('About')
-      } else if (currentScrollY >= experienceOffset && currentScrollY < projectsOffset) {
-        setActiveSection('Experience')
-      } else if (currentScrollY >= projectsOffset) {
-        setActiveSection('Projects')
-      }
-    }
-  }, [viewportHeight, scrollX, scrollY])
+    if (aboutEntry?.isIntersecting) setActiveSection('about')
+    else if (experienceEntry?.isIntersecting) setActiveSection('experience')
+    else if (projectsEntry?.isIntersecting) setActiveSection('projects')
+  }, [
+    aboutEntry?.isIntersecting,
+    experienceEntry?.isIntersecting,
+    projectsEntry?.isIntersecting,
+  ])
 
   return (
     <Container size='xl' p={[containerPaddingTop, containerPaddingLeftRight, 0, containerPaddingLeftRight].join(' ')}>
@@ -48,15 +39,19 @@ function App() {
 
       <SimpleGrid cols={{ base: 1, md: 2 }}>
         <Box pos='relative'>
-          <Box pos='sticky' top={containerPaddingTop} h={`calc(100vh - ${containerPaddingTop}px - ${isMobile ? '40px' : '0px'})`}>
+          <Box pos='sticky' top={containerPaddingTop} h={`calc(100lvh - ${containerPaddingTop}px)`}>
             <Sections.Hero />
           </Box>
         </Box>
 
-        <Stack>
-          <Sections.About ref={aboutRef} style={{ minHeight: '50vh' }} />
-          <Sections.Experience ref={experienceRef} style={{ paddingTop: containerPaddingTop, minHeight: '50vh' }} />
-          <Sections.Projects ref={projectsRef} style={{ paddingTop: containerPaddingTop, minHeight: '50vh' }} />
+        <Stack gap={100} mt={isMd ? containerPaddingTop : undefined}>
+          <Sections.About ref={aboutRef} style={{ minHeight: '40vh' }} />
+          <Sections.Experience ref={experienceRef} pt={containerPaddingTop} />
+          <Sections.Projects ref={projectsRef} pt={containerPaddingTop} />
+
+          <Box p={[containerPaddingTop, 0, containerPaddingTop, 0].join(' ')}>
+            <Sections.Footer />
+          </Box>
         </Stack>
       </SimpleGrid>
     </Container>

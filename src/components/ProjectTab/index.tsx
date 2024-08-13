@@ -1,26 +1,21 @@
-import { Badge, Box, Group, Paper, PaperProps, Stack, Text } from "@mantine/core"
+import { Badge, Box, Group, Image, Paper, PaperProps, Stack, Text } from "@mantine/core"
 import { IconExternalLink } from '@tabler/icons-react'
 import React from "react"
 
 import classes from './index.module.scss'
 
-type ExperienceTabProps = PaperProps & React.DOMAttributes<HTMLDivElement> & {
-  periodStart: string
-  periodEnd: string
+type ProjectTabProps = PaperProps & React.DOMAttributes<HTMLDivElement> & {
   title: string
-  subtitle: string
   description: React.ReactNode
+  thumbnailSrc: string
   tags: string[]
   url?: string
-  fade?: boolean
 }
 
-const ExperienceTab: React.FC<ExperienceTabProps> = ({
-  periodStart,
-  periodEnd,
+const ProjectTab: React.FC<ProjectTabProps> = ({
   title,
-  subtitle,
   description,
+  thumbnailSrc,
   tags = [],
   url,
   className,
@@ -50,20 +45,21 @@ const ExperienceTab: React.FC<ExperienceTabProps> = ({
       <Group
         align='flex-start'
         wrap='nowrap'
-        gap='xs'
+        gap='md'
         mr='xl'
       >
-        <Text fz='xs' miw={100}>
-          {periodStart} – {periodEnd}
-        </Text>
+        <Image
+          className={classes.thumbnail}
+          radius='md'
+          h={70}
+          w={100}
+          fit='contain'
+          src={thumbnailSrc}
+        />
 
         <Stack gap='xs'>
           <Text className={classes.title} fw={700} mr='sm' lh='1.2rem'>
             {title}
-            <Text span fz='sm' lh='1.2rem'>
-              {' • '}
-              {subtitle}
-            </Text>
           </Text>
 
           <Text>
@@ -84,6 +80,6 @@ const ExperienceTab: React.FC<ExperienceTabProps> = ({
 }
 
 export {
-  ExperienceTab as default,
-  type ExperienceTabProps
+  ProjectTab as default,
+  type ProjectTabProps
 }

@@ -9,11 +9,13 @@ import '@mantine/core/styles.css'
 import './index.scss'
 
 const theme = createTheme({
+  // primaryColor: 'blue',
+  // primaryColor: 'teal',
   primaryColor: 'cyan',
+  // primaryColor: 'yellow',
+
   // fontFamily: 'Futura Std, sans-serif',
-  // fontFamily: 'Open Sans Variable, sans-serif',
-  fontFamily: 'Inter Variable, sans-serif',
-  // fontFamily: 'Poppins, sans-serif',
+  fontFamily: 'Open Sans Variable, sans-serif',
 
   components: {
     Text: Text.extend({

@@ -6,14 +6,38 @@ $transition-duration: 0.15s;
   opacity: 0.5;
   color: var(--mantine-color-white) !important;
 
-  &:hover {
-    opacity: 0.9;
-    color: var(--mantine-color-anchor) !important;
+  @media screen and (min-width: 760px) {
+    // use :hover for desktop
+    &:hover {
+      opacity: 0.9;
+      color: var(--mantine-color-anchor) !important;
+      .navIndicator {
+        width: 4rem;
+        background-color: var(--mantine-color-anchor);
+      }
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    // use :active for mobile
+    &:active {
+      opacity: 0.9;
+      color: var(--mantine-color-anchor) !important;
+      .navIndicator {
+        width: 4rem;
+        background-color: var(--mantine-color-anchor);
+      }
+    }
   }
 
   &.active {
     opacity: 0.9;
     color: var(--mantine-color-anchor) !important;
+
+    .navIndicator {
+      width: 4rem;
+      background-color: var(--mantine-color-anchor);
+    }
   }
 }
 
@@ -24,9 +48,4 @@ $transition-duration: 0.15s;
   height: 1px;
   background-color: var(--mantine-color-white);
   transition: all $transition-duration cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.active {
-    width: 4rem;
-    background-color: var(--mantine-color-anchor);
-  }
 }

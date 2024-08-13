@@ -1,11 +1,17 @@
-import { ActionIcon, Box, Group, Space, Stack, Text, Tooltip } from '@mantine/core'
-import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify, IconMail } from '@tabler/icons-react'
+import { ActionIcon, Box, Button, Center, Group, SimpleGrid, Space, Stack, Text, Tooltip } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
+import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify, IconDownload, IconMail } from '@tabler/icons-react'
 
-import { type ActiveSectionTypedef } from '@/hooks'
+import { ActiveSectionTypedef } from '@/hooks'
 
 import SectionLink from './SectionLink'
 
 const Hero = () => {
+  const isMd = useMediaQuery('(max-width: 990px)')
+  const isSm = useMediaQuery('(max-width: 465px)')
+  const isXs = useMediaQuery('(max-width: 425px)')
+  const isXss = useMediaQuery('(max-width: 360px)')
+
   return (
     <Stack h='100%'>
       <Stack>
@@ -15,9 +21,10 @@ const Hero = () => {
             href='#'
             td='none'
             ff='Montserrat'
-            fz='3.75rem'
+            fz={isXss ? '2.75rem' : isXs ? '3.25rem' : '3.75rem'}
             fw={900}
             c='var(--mantine-primary-color-0)'
+            lh={isXss ? '2.25rem' : isXs ? '3rem' : '3.5rem'}
             style={{
               textShadow: '0 0 0.8rem rgba(255, 255, 255, 0.3)',
             }}
@@ -28,7 +35,6 @@ const Hero = () => {
             ff='Montserrat'
             fz='1.4rem'
             fw={700}
-            mt='-1rem'
           >
             Fullstack Engineer
           </Text>
@@ -38,20 +44,39 @@ const Hero = () => {
         </Text>
       </Stack>
 
-      <Stack mt='xl'>
-        {
-          (['About', 'Experience', 'Projects'] as ActiveSectionTypedef[])
-            .map((section) => (
-              <Box key={section}>
-                <SectionLink section={section} />
-              </Box>
-            ))
-        }
-      </Stack>
+      <Box component={(isMd ? Stack : Group) as any} wrap='nowrap' pt='xl'>
+        <Stack>
+          {
+            (['about', 'experience', 'projects'] as ActiveSectionTypedef[])
+              .map((section, idx) => (
+                <Box key={idx} w='10rem'>
+                  <SectionLink section={section} />
+                </Box>
+              ))
+          }
+        </Stack>
+
+        <Center flex='1' pt={isMd ? 'xl' : undefined}>
+          <Button
+            component='a'
+            href='https://drive.google.com/file/d/1cY4iZiepFwAUlLaSyZ1vsTD_p_q0IfX0/view?usp=sharing'
+            target='_blank'
+            color='blue'
+            variant='filled'
+            size={isSm ? 'md' : 'lg'}
+            p={isSm ? 'xs' : undefined}
+          >
+            <Group wrap='nowrap' gap={isSm ? 5 : 'xs'}>
+              <IconDownload />
+              Get my resume
+            </Group>
+          </Button>
+        </Center>
+      </Box>
 
       <Space flex={1} />
 
-      <Group mb={65}>
+      <Group mb={isMd ? 150 : 65}>
         <Tooltip withArrow label='Check out my GitHub'>
           <ActionIcon
             size='lg'

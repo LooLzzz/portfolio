@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 
-type ActiveSectionTypedef = 'About' | 'Experience' | 'Projects'
+type ActiveSectionTypedef = 'about' | 'experience' | 'projects'
 type SetActiveSectionTypedef = React.Dispatch<React.SetStateAction<ActiveSectionTypedef>>
 type ActiveSectionContextTypedef = [
   ActiveSectionTypedef,
@@ -12,7 +12,7 @@ type ActiveSectionProviderProps = {
 }
 
 const ActiveSectionContext = createContext<ActiveSectionContextTypedef>([
-  'About',
+  'about',
   () => { }
 ])
 const useActiveSection = () => {
@@ -23,7 +23,7 @@ const useActiveSection = () => {
   return context
 }
 
-const ActiveSectionProvider = ({ children, defaultValue = 'About' }: ActiveSectionProviderProps) => {
+const ActiveSectionProvider = ({ children, defaultValue = 'about' }: ActiveSectionProviderProps) => {
   const [activeSection, setActiveSection] = useState<ActiveSectionTypedef>(defaultValue)
 
   return (

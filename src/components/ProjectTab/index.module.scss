@@ -1,9 +1,10 @@
 $primary-color-light-hover-transparent: color-mix(in srgb, var(--mantine-primary-color-light-hover), transparent 70%);
-$border-color: var(--mantine-color-dark-4);
-$border-color-transparent: color-mix(in srgb, $border-color, transparent 100%);
+$border-color-paper: var(--mantine-color-dark-4);
+$border-color-image: var(--mantine-color-dark-3);
+$border-color-paper-transparent: color-mix(in srgb, $border-color-paper, transparent 100%);
 
-$transition-duration: 0.2s;
-$transition-timing-function: ease-in-out;
+$transition-duration: 0.1s;
+$transition-timing-function: ease;
 
 .card {
     position: relative;
@@ -12,8 +13,8 @@ $transition-timing-function: ease-in-out;
     transition-timing-function: $transition-timing-function;
     background: none !important;
     padding: var(--mantine-spacing-xs);
-    border-top: calc(0.0625rem * var(--mantine-scale)) solid $border-color-transparent;
-    // border-left: calc(0.0625rem * var(--mantine-scale)) solid $border-color-transparent;
+    border-top: calc(0.0625rem * var(--mantine-scale)) solid $border-color-paper-transparent;
+    // border-left: calc(0.0625rem * var(--mantine-scale)) solid $border-color-paper-transparent;
 
     &:hover {
         background: $primary-color-light-hover-transparent !important;
@@ -29,11 +30,20 @@ $transition-timing-function: ease-in-out;
             top: -2px;
             right: -2px;
         }
+
+        .thumbnail {
+            border-color: $border-color-image;
+        }
     }
 }
 
 .title {
     transition: all $transition-duration $transition-timing-function;
+}
+
+.thumbnail {
+    transition: border $transition-duration $transition-timing-function;
+    border: calc(0.125rem * var(--mantine-scale)) solid $border-color-paper;
 }
 
 .externalLink {
