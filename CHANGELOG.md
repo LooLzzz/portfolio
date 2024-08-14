@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/LooLzzz/portfolio/compare/v0.1.0...v0.2.0) (2024-08-14)
+
+
+### Features
+
+* many improvments ([3979bf7](https://github.com/LooLzzz/portfolio/commit/3979bf749f633a5d9c8e2ec1add1f608826be411))
+* release-please config ([a3ee86a](https://github.com/LooLzzz/portfolio/commit/a3ee86a693f30a93a523d641474219510aea2750))
+
 ## [0.1.0](https://github.com/LooLzzz/portfolio/compare/v0.1.0...v0.1.0) (2024-08-11)
 
 
