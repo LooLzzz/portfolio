@@ -32,7 +32,7 @@ function App({
   return (
     <Container size='xl' p={[containerPaddingTop, containerPaddingLeftRight, 0, containerPaddingLeftRight].join(' ')}>
       <Box
-        className='floatingHighlight'
+        className='floatingFlashlight'
         top={mouseY}
         left={mouseX}
       />

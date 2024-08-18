@@ -1,0 +1,9 @@
+.text {
+    color: hsl(216, 18%, 60%);
+    opacity: 0.8;
+
+    a {
+        transition: color 0.2s ease;
+        color: color-mix(in srgb, #fff 25%, hsl(216, 18%, 60%));
+    }
+}

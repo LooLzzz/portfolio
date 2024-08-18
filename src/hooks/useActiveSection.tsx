@@ -40,7 +40,7 @@ const ActiveSectionProvider = ({ children, defaultValue = 'about' }: ActiveSecti
 
 export {
   ActiveSectionProvider,
-  useActiveSection,
+  useActiveSection as default,
   type ActiveSectionContextTypedef as ActiveSectionContextProps,
   type ActiveSectionProviderProps,
   type ActiveSectionTypedef,

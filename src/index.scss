@@ -12,8 +12,7 @@ html {
 }
 
 body {
-  --test: red;
-  --mantine-background-color: #0f172a;
+  // --mantine-background-color: color-mix(in srgb, var(--mantine-primary-color-6), #000 80%);
   background-color: var(--mantine-background-color);
 
   ::selection {
@@ -21,6 +20,14 @@ body {
     background-color: var(--mantine-primary-color-filled);
   }
 }
+
+// .mantine-Button-root {
+//   background-color: var(--mantine-secondary-color);
+
+//   &:hover {
+//     background-color: var(--mantine-secondary-color-hover);
+//   }
+// }
 
 .mantine-Text-root {
   a {
@@ -45,22 +52,20 @@ a.mantine-ActionIcon-root {
   }
 }
 
-$dimlight: rgba(198, 194, 255, 0.6); // blend mode: overlay
-// $dimlight: rgba(29, 78, 216, 0.15);  // blend mode: none
+.floatingFlashlight {
+  $flashlight-color-effect: color-mix(in srgb, #fff, var(--mantine-background-color) 30%);
 
-.floatingHighlight {
   position: fixed;
   width: 0;
   height: 0;
 
-  background-color: $dimlight;
+  background-color: $flashlight-color-effect;
   mix-blend-mode: overlay;
   border-radius: 50%;
-  box-shadow: 0 0 12.5rem 12.5rem $dimlight;
+  box-shadow: 0 0 12.5rem 12.5rem $flashlight-color-effect;
 
   /* disable user interaction */
   pointer-events: none;
-  // z-index: -9999;
   z-index: 30;
 }
 

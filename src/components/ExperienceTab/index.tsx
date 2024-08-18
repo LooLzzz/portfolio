@@ -28,14 +28,17 @@ const ExperienceTab: React.FC<ExperienceTabProps> = ({
 }) => {
   return (
     <Paper
+      component='a'
+      href={url}
+      target='_blank'
       radius='md'
+      c='gray'
       className={[
         className ?? '',
         classes.card,
         url ? 'clickable' : '',
       ].join(' ')}
-      onClick={() => url && window.open(url, '_blank')}
-      {...props}
+      {...props as any}
     >
       {url &&
         <Box

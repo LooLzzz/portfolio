@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Button, Center, Group, SimpleGrid, Space, Stack, Text, Tooltip } from '@mantine/core'
+import { ActionIcon, Box, Button, Center, Group, Space, Stack, Text, Tooltip } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify, IconDownload, IconMail } from '@tabler/icons-react'
 

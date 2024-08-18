@@ -20,6 +20,7 @@ const projectsData: ProjectTabProps[] = [
   {
     title: 'Docking Station',
     thumbnailSrc: './thumbnails/docking-station.png',
+    // thumbnailFit: 'cover',
     tags: ['Docker', 'React', 'Nextjs', 'Python', 'FastAPI', 'GitHub Actions', 'DockerHub', 'CI/CD', 'Self-hosted'],
     url: 'https://github.com/loolzzz/docking-station',
     description: (
@@ -36,38 +37,38 @@ const projectsData: ProjectTabProps[] = [
   {
     title: 'MagicDex',
     thumbnailSrc: './thumbnails/magicdex-logo.png',
+    // thumbnailFit: 'cover',
     tags: ['Magic: The Gathering', 'React', 'Nextjs', 'Python', 'Computer Vision', 'Scryfall API'],
     url: 'https://magicdex.vercel.app/',
     description: (
       <DescriptionText>
         <Box>
-          desc2
         </Box>
       </DescriptionText>
     ),
   },
   {
     title: 'Custom Mechanical Keyboard',
-    thumbnailSrc: './thumbnails/docking-station.png',
+    thumbnailSrc: './thumbnails/qmk.png',
+    // thumbnailFit: 'cover',
     tags: ['C', 'QMK', 'DIY', 'Mechanical Keyboard'],
     // url: '',
     description: (
       <DescriptionText>
         <Box>
-          desc2
         </Box>
       </DescriptionText>
     ),
   },
   {
-    title: 'Pandoravault.cc',
-    thumbnailSrc: './thumbnails/docking-station.png',
-    tags: ['Devops', 'OpenMediaVault', 'Docker', 'DIY', 'Self-hosted'],
+    title: 'Pandoravault',
+    thumbnailSrc: './thumbnails/omv.jpg',
+    thumbnailFit: 'cover',
+    tags: ['Devops', 'Cloudflare', 'OpenMediaVault', 'Docker', 'DIY', 'Self-hosted'],
     // url: '',
     description: (
       <DescriptionText>
         <Box>
-          desc2
         </Box>
       </DescriptionText>
     ),

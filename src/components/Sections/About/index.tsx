@@ -24,11 +24,11 @@ const About = forwardRef<HTMLDivElement, AboutProps>(
           I have experience with a wide range of technologies, from Python and Node.js to React and Next.js, and I'm always looking to learn more.
         </Box>
 
-        <Box>
+        {/* <Box>
           some text as a beginning {' '}
           <a target="_blank" href='http://github.com/loolzzz'>an inline link</a>
           {' '} and then some more text
-        </Box>
+        </Box> */}
       </Text>
     )
   })
