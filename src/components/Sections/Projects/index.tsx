@@ -1,4 +1,4 @@
-import { Box, BoxProps, Stack, Text } from "@mantine/core"
+import { Box, BoxProps, List, Stack, Text } from "@mantine/core"
 import { forwardRef } from "react"
 
 import { ProjectTab, ProjectTabProps } from "@/components"
@@ -30,6 +30,37 @@ const projectsData: ProjectTabProps[] = [
         </Box>
         <Box>
           This project started as a personal project to manage my docker containers, and I decided to make it open source.
+        </Box>
+      </DescriptionText>
+    ),
+  },
+  {
+    title: 'Better Wordle',
+    thumbnailSrc: './thumbnails/better-wordle-screenshot.png',
+    // thumbnailFit: 'cover',
+    tags: ['Wordle', 'React', 'Vite', 'Bun', 'PWA', 'SCSS', 'GitHub Pages', 'Fine I\'ll Do It Myself'],
+    url: 'https://loolzzz.github.io/better-wordle/',
+    description: (
+      <DescriptionText>
+        <Box>
+          A better version of Wordle, with more features and customization.
+        </Box>
+        <Box>
+          All the normal Wordle features and rules are present, with the following additional features:
+        </Box>
+        <Box component={List} fz='sm'>
+          <List.Item>
+            Clicking on a box will highlight it and pressing a key will fill the highlighted box with the corresponding letter.
+          </List.Item>
+          <List.Item>
+            Pressing the Backspace key will clear the highlighted box.
+          </List.Item>
+          <List.Item>
+            Pressing left or right arrow keys will move the highlight left or right.
+          </List.Item>
+          <List.Item>
+            Pressing the Escape key will clear the selection.
+          </List.Item>
         </Box>
       </DescriptionText>
     ),

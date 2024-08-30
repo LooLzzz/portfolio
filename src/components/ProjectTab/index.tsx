@@ -25,14 +25,20 @@ const ProjectTab: React.FC<ProjectTabProps> = ({
   className,
   ...props
 }) => {
-  const [[repoOwner, repoName], setGithubRepo] = useState([undefined, undefined])
+  const [[repoOwner, repoName], setGithubRepo] = useState<[string?, string?]>([undefined, undefined])
   const { data: stargazersCount, isFetched } = useGithubRepoStars(repoOwner, repoName)
 
   useEffect(() => {
     const urlObj = new URL(url ?? 'http://localhost')
     if (urlObj.hostname.toLowerCase() === 'github.com') {
+      // url like 'http://github.com/loolzzz/docking-station'
       const [repoOwner, repoName] = urlObj.pathname.split('/').slice(-2)
-      setGithubRepo([repoOwner as any, repoName as any])
+      setGithubRepo([repoOwner, repoName])
+    } else if (urlObj.hostname.toLowerCase().includes('github.io')) {
+      // url like 'http://loolzzz.github.io/better-wordle/'
+      const repoName = urlObj.pathname.replace(/(^\/)|(\/$)/g, '')
+      const repoOwner = urlObj.hostname.toLowerCase().split('.')[0]
+      setGithubRepo([repoOwner, repoName])
     }
   }, [url])
 
