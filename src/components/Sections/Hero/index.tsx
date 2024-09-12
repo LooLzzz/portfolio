@@ -1,6 +1,8 @@
 import { ActionIcon, Box, Button, Center, Group, Space, Stack, Text, Tooltip } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify, IconDownload, IconMail } from '@tabler/icons-react'
+import { useCallback } from 'react'
+import ReactGA from 'react-ga4'
 
 import { ActiveSectionTypedef } from '@/hooks'
 
@@ -11,6 +13,14 @@ const Hero = () => {
   const isSm = useMediaQuery('(max-width: 465px)')
   const isXs = useMediaQuery('(max-width: 425px)')
   const isXss = useMediaQuery('(max-width: 360px)')
+
+  const GASocialClickEvent = useCallback((label: string) => {
+    ReactGA.event({
+      category: 'social',
+      action: 'click',
+      label,
+    })
+  }, [])
 
   return (
     <Stack h='100%'>
@@ -60,6 +70,7 @@ const Hero = () => {
           <Button
             component='a'
             href='https://drive.google.com/file/d/1cY4iZiepFwAUlLaSyZ1vsTD_p_q0IfX0/view?usp=sharing'
+            onClick={() => GASocialClickEvent('resume')}
             target='_blank'
             color='blue'
             variant='filled'
@@ -86,6 +97,7 @@ const Hero = () => {
             component='a'
             target='_blank'
             href='https://github.com/loolzzz'
+            onClick={() => GASocialClickEvent('github')}
           >
             <IconBrandGithub size={50} />
           </ActionIcon>
@@ -100,6 +112,7 @@ const Hero = () => {
             component='a'
             target='_blank'
             href='https://linkedin.com/in/loolzzz'
+            onClick={() => GASocialClickEvent('linkedin')}
           >
             <IconBrandLinkedin size={50} />
           </ActionIcon>
@@ -114,6 +127,7 @@ const Hero = () => {
             component='a'
             target='_blank'
             href='https://open.spotify.com/user/12148066263'
+            onClick={() => GASocialClickEvent('spotify')}
           >
             <IconBrandSpotify size={50} />
           </ActionIcon>
@@ -128,6 +142,7 @@ const Hero = () => {
             component='a'
             target='_blank'
             href='mailto:noaml12@gmail.com'
+            onClick={() => GASocialClickEvent('email')}
           >
             <IconMail size={50} />
           </ActionIcon>

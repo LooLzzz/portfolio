@@ -3,7 +3,8 @@ import { Box, Container, SimpleGrid, Stack } from '@mantine/core'
 import { useIntersection, useMediaQuery, useMouse } from '@mantine/hooks'
 import { useEffect } from 'react'
 
-import { useActiveSection } from './hooks'
+import { useActiveSection } from '@/hooks'
+
 
 function App({
   containerPaddingBase = 100,
