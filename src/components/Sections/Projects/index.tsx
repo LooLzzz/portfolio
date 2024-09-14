@@ -1,8 +1,10 @@
-import { Box, BoxProps, List, Stack, Text } from "@mantine/core"
-import { forwardRef } from "react"
+import { Box, BoxProps, List, Stack, Text } from '@mantine/core'
+import { motion } from 'framer-motion'
+import { forwardRef } from 'react'
 
-import { ProjectTab, ProjectTabProps } from "@/components"
+import { ProjectTab, ProjectTabProps } from '@/components'
 
+import { popMotionProps } from '@/framer-motion'
 import classes from './index.module.scss'
 
 const DescriptionText = ({ ...props }) => (
@@ -119,7 +121,7 @@ const Projects = forwardRef<HTMLDivElement, BoxProps>(
           fz='h4'
           fw={700}
           style={{
-            webkitBackdropFilter: 'blur(5px)',
+            WebkitBackdropFilter: 'blur(5px)',
             backdropFilter: 'blur(5px)',
             textTransform: 'uppercase',
             zIndex: 1,
@@ -133,11 +135,15 @@ const Projects = forwardRef<HTMLDivElement, BoxProps>(
         >
           {
             projectsData.map((data, idx) => (
-              <ProjectTab
+              <motion.div
                 key={idx}
-                className={classes.highlight}
-                {...data}
-              />
+                {...popMotionProps}
+              >
+                <ProjectTab
+                  className={classes.highlight}
+                  {...data}
+                />
+              </motion.div>
             ))
           }
         </Stack>

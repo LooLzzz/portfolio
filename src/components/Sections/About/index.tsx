@@ -1,5 +1,5 @@
-import { Box, Stack, Text, TextProps } from "@mantine/core"
-import { forwardRef } from "react"
+import { Box, Stack, Text, TextProps } from '@mantine/core'
+import { forwardRef } from 'react'
 
 type AboutProps = React.DOMAttributes<HTMLDivElement> & TextProps
 

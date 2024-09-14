@@ -1,7 +1,9 @@
 import { Box, BoxProps, Stack, Text } from '@mantine/core'
+import { motion } from 'framer-motion'
 import { forwardRef } from 'react'
 
 import { ExperienceTab, ExperienceTabProps } from '@/components'
+import { popMotionProps } from '@/framer-motion'
 
 import classes from './index.module.scss'
 
@@ -80,7 +82,7 @@ const Experience = forwardRef<HTMLDivElement, BoxProps>(
           fz='h4'
           fw={700}
           style={{
-            webkitBackdropFilter: 'blur(5px)',
+            WebkitBackdropFilter: 'blur(5px)',
             backdropFilter: 'blur(5px)',
             textTransform: 'uppercase',
             zIndex: 1,
@@ -94,11 +96,15 @@ const Experience = forwardRef<HTMLDivElement, BoxProps>(
         >
           {
             experiencesData.map((data, idx) => (
-              <ExperienceTab
+              <motion.div
                 key={idx}
-                className={classes.highlight}
-                {...data}
-              />
+                {...popMotionProps}
+              >
+                <ExperienceTab
+                  className={classes.highlight}
+                  {...data}
+                />
+              </motion.div>
             ))
           }
         </Stack>
