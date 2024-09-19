@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/LooLzzz/portfolio/compare/v0.1.0...v0.2.0) (2024-09-19)
+
+
+### Features
+
+* Add Footer section ([2337a1d](https://github.com/LooLzzz/portfolio/commit/2337a1d23c2ae77402b2fc0e57a16da95d1e8a09))
+* Add thumbnails for projects ([2337a1d](https://github.com/LooLzzz/portfolio/commit/2337a1d23c2ae77402b2fc0e57a16da95d1e8a09))
+* Add useGithubRepoStars hook ([2337a1d](https://github.com/LooLzzz/portfolio/commit/2337a1d23c2ae77402b2fc0e57a16da95d1e8a09))
+* Added better-wordle project section ([9db51e6](https://github.com/LooLzzz/portfolio/commit/9db51e6f10c4993137d12906a27c0a96ac0e03c8))
+* many improvments ([3979bf7](https://github.com/LooLzzz/portfolio/commit/3979bf749f633a5d9c8e2ec1add1f608826be411))
+
 ## [0.1.0](https://github.com/LooLzzz/portfolio/compare/v0.1.0...v0.1.0) (2024-08-11)
 
 
