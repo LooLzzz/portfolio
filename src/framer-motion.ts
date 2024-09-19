@@ -1,7 +1,7 @@
 import { MotionProps, Transition, Variants } from 'framer-motion'
 
 
-export const HERO_TITLE_TRANSITION_DELAY = 0.6
+export const HERO_TITLE_TRANSITION_DELAY = 1.25
 
 export const heroTitleTransition: Transition = {
   type: 'spring',
@@ -12,13 +12,27 @@ export const heroTitleTransition: Transition = {
 }
 
 export const popMotionVariants: Variants = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: { opacity: 1, scale: 1 },
+  hidden: {
+    opacity: 0,
+    scale: 0.75,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    pointerEvents: 'unset',
+  },
 }
 
 export const fadeMotionVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'unset',
+  },
 }
 
 export const popMotionProps: MotionProps = {

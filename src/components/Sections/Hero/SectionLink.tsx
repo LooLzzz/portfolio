@@ -1,4 +1,5 @@
 import { Box, Group, Text, type TextProps } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 
 import { useActiveSection, type ActiveSectionTypedef } from '@/hooks'
 
@@ -12,7 +13,8 @@ const SectionLink = ({
   section,
   ...props
 }: SectionLinkProps) => {
-  const [activeSection,] = useActiveSection()
+  const isMd = useMediaQuery('(max-width: 990px)')
+  const [activeSection, _setActiveSection] = useActiveSection()
   const isActive = activeSection === section
   const activeClassName = isActive ? classes.active : ''
 
@@ -20,7 +22,7 @@ const SectionLink = ({
     <Box w='fit-content'>
       <Text
         component='a'
-        href={section === 'about' ? '#' : `#${section.toLowerCase()}`}
+        href={section === 'about' && !isMd ? '#' : `#${section.toLowerCase()}`}
         className={`${classes.sectionLink} ${activeClassName}`}
         fw={700}
         fz='xs'

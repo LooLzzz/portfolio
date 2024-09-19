@@ -67,9 +67,8 @@ function App({
               component={motion.div}
               {...fadeMotionProps as any}
               gap={100}
-              mt={isMd ? containerPaddingTop : undefined}
             >
-              <Sections.About ref={aboutRef} style={{ minHeight: '40vh' }} />
+              <Sections.About ref={aboutRef} pt={isMd ? containerPaddingTop : undefined} mih='40vh' />
               <Sections.Experience ref={experienceRef} pt={containerPaddingTop} />
               <Sections.Projects ref={projectsRef} pt={containerPaddingTop} />
 
