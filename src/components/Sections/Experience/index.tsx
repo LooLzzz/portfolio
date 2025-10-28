@@ -20,8 +20,56 @@ const DescriptionText = ({ ...props }) => (
 
 const experiencesData: ExperienceTabProps[] = [
   {
-    periodStart: '2023',
+    periodStart: '2025',
     periodEnd: 'Present',
+    title: 'Technical Leader',
+    subtitle: 'Spacial AI',
+    tags: ['AI', 'AWS', 'Python', 'FastAPI', 'React', 'Computer Vision', 'Construction Tech', 'PostgreSQL', 'Docker', 'Microservices'],
+    url: 'https://spacial.io/',
+    description: (
+      <DescriptionText>
+        <Text fs='italic' fz='inherit'>
+          Developing an AI driven platform for home construction management in a rising startup.
+        </Text>
+        <Box>
+          Leading a team of engineers to architect and implement scalable solutions, ensuring high performance and reliability.
+        </Box>
+        <Box>
+          Overseeing the integration of advanced AI models into the platform, enhancing features such as computer vision for site monitoring.
+        </Box>
+        <Box>
+          Coordinating cross-functional collaboration to align technical strategies with business goals, driving innovation and growth.
+        </Box>
+      </DescriptionText>
+    ),
+  },
+  {
+    periodStart: '2024',
+    periodEnd: '2025',
+    title: 'Software Engineer',
+    subtitle: 'Spacial AI',
+    tags: ['AI', 'AWS', 'Python', 'FastAPI', 'React', 'Computer Vision', 'Construction Tech', 'PostgreSQL', 'Docker', 'Microservices'],
+    url: 'https://spacial.io/',
+    description: (
+      <DescriptionText>
+        <Text fs='italic' fz='inherit'>
+          Developing an AI driven platform for home construction management in a rising startup.
+        </Text>
+        <Box>
+          Shaped the backend architecture using FastAPI, ensuring scalability and robustness.
+        </Box>
+        <Box>
+          Integrated AWS services such as S3 for storage, Lambda for serverless functions, and EC2 for scalable computing resources.
+        </Box>
+        <Box>
+          Collaborated with the rest of the team to design and implement user-friendly frontend components using React, enhancing user experience.
+        </Box>
+      </DescriptionText>
+    ),
+  },
+  {
+    periodStart: '2023',
+    periodEnd: '2024',
     title: 'Fullstack Developer',
     subtitle: 'YIT / Yedioth Ahronoth Group',
     tags: ['React', 'Python', 'Redux', 'Nodejs', 'TypeScript', 'JavaScript', 'AWS', 'Docker', 'PostgreSQL', 'MySQL', 'Express', 'Koa'],

@@ -69,7 +69,7 @@ const TitleBox = forwardRef<HTMLDivElement, TitleBoxProps>(
           fz='1.4rem'
           fw={700}
         >
-          Fullstack Engineer
+          Software Engineer
         </Text>
       </Box>
     )

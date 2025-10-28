@@ -38,10 +38,10 @@ const About = forwardRef<HTMLDivElement, BoxProps>(
           opacity='0.9'
         >
           <Box>
-            I'm a fullstack engineer with a passion for creating and maintaining web applications, from internal tools to customer-facing products.
+            I'm a software engineer with a passion for creating and maintaining application, from internal tools to customer-facing products.
           </Box>
           <Box>
-            I have experience with a wide range of technologies, from Python and Node.js to React and Next.js, and I'm always looking to learn more.
+            I have experience with a wide range of technologies, from Python and Node.js, React and Next.js, to cloud platforms like AWS and dockerized environments. I'm always looking to learn new technologies and improve my skills.
           </Box>
 
           {/* <Box>
